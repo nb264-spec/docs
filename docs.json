@@ -34,15 +34,18 @@
               "internal/api-changelog/payments-api-changes-august-2026"
             ]
           }
-        ]
+        ],
+        "hidden": true
       },
       "authentication",
       "webhooks",
       {
-        "group": "Getting Started",
+        "group": "Legacy",
+        "icon": "clock-rotate-left",
         "pages": [
-          "index",
-          "quickstart"
+          "guides/old-auth-flow",
+          "guides/legacy-webhooks",
+          "guides/deprecated-webhooks-v1-format"
         ]
       }
     ],
@@ -96,5 +99,22 @@
       "github": "https://github.com/mintlify",
       "linkedin": "https://linkedin.com/company/mintlify"
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/guides-legacy-webhooks",
+      "destination": "/guides/legacy-webhooks",
+      "permanent": true
+    },
+    {
+      "source": "/guides-deprecated-webhooks-v1-format",
+      "destination": "/guides/deprecated-webhooks-v1-format",
+      "permanent": true
+    },
+    {
+      "source": "/guides-old-auth-flow-mdx",
+      "destination": "/guides/old-auth-flow",
+      "permanent": true
+    }
+  ]
 }
