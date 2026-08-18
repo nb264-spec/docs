@@ -31,7 +31,24 @@
           "icon": "newspaper"
         }
       ]
-    }
+    },
+    "groups": [
+      {
+        "group": "Getting Started",
+        "pages": [
+          "index",
+          "quickstart"
+        ]
+      },
+      {
+        "group": "api-reference",
+        "pages": [
+          "api-reference/customers",
+          "api-reference/payments",
+          "api-reference/refunds"
+        ]
+      }
+    ]
   },
   "logo": {
     "light": "/logo/light.svg",
