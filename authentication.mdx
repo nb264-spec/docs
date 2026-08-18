@@ -1,7 +1,21 @@
 ---
 title: "Authentication"
+description: "Authenticate API requests with OAuth 2.0 access tokens."
 ---
 
-<Note>
-  Static API key auth (`X-API-Key` header) is deprecated in favor of OAuth2. See [Legacy API Key Authentication](/guides/old-auth-flow) for the old method, retained for existing integrations only.
-</Note>
+Use OAuth 2.0 access tokens to authenticate API requests.
+
+## Send an access token
+
+Include the token in the `Authorization` header using the Bearer scheme:
+
+```http
+Authorization: Bearer <access_token>
+Content-Type: application/json
+```
+
+Keep access tokens on the server, request only the scopes your integration needs, and replace tokens before they expire.
+
+<Warning>
+  Never expose access tokens in client-side code or commit them to source control.
+</Warning>

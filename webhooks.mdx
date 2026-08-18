@@ -1,7 +1,22 @@
 ---
-title: "Webhooks"
+title: "Event streaming"
+sidebarTitle: "Event streaming"
+description: "Consume and process product events reliably."
 ---
 
+Consume product events through the event-streaming API.
+
+## Connect a consumer
+
+Create a server-side consumer, subscribe it to the event types your integration needs, and store its cursor after each successfully processed event.
+
+## Process events safely
+
+- Verify the event signature before processing the payload.
+- Treat event IDs as idempotency keys so retries do not create duplicate work.
+- Persist the consumer cursor only after processing succeeds.
+- Retry transient failures with exponential backoff.
+
 <Note>
-  For new integrations, use the [event-streaming API](/api-reference/events) instead. The `/v1/webhooks/register` endpoint described below is being phased out.
+  Event delivery is at least once. Your handler must safely accept the same event more than once.
 </Note>
