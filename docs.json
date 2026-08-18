@@ -16,6 +16,34 @@
           "index",
           "quickstart"
         ]
+      },
+      {
+        "group": "api-reference",
+        "pages": [
+          "api-reference/customers",
+          "api-reference/payments",
+          "api-reference/refunds"
+        ]
+      },
+      {
+        "group": "internal",
+        "pages": [
+          {
+            "group": "api-changelog",
+            "pages": [
+              "internal/api-changelog/payments-api-changes-august-2026"
+            ]
+          }
+        ]
+      },
+      "authentication",
+      "webhooks",
+      {
+        "group": "Getting Started",
+        "pages": [
+          "index",
+          "quickstart"
+        ]
       }
     ],
     "global": {
@@ -31,24 +59,7 @@
           "icon": "newspaper"
         }
       ]
-    },
-    "groups": [
-      {
-        "group": "Getting Started",
-        "pages": [
-          "index",
-          "quickstart"
-        ]
-      },
-      {
-        "group": "api-reference",
-        "pages": [
-          "api-reference/customers",
-          "api-reference/payments",
-          "api-reference/refunds"
-        ]
-      }
-    ]
+    }
   },
   "logo": {
     "light": "/logo/light.svg",
