@@ -1,0 +1,63 @@
+---
+title: "Payments"
+description: "Create a payment using the Payments API."
+---
+
+## Endpoint
+
+`POST /v1/payments`
+
+## Authentication
+
+This endpoint requires an API key.
+
+```http
+Authorization: Bearer YOUR_API_KEY
+Content-Type: application/json
+```
+
+## Request
+
+```jsonl
+{
+  "amount": 1000,
+  "currency": "USD",
+  "customer_id": "cus_123"
+}
+```
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| amount | integer | Yes | Payment amount in cents |
+| currency | string | Yes | Three-letter currency code |
+| customer\_id | string | Yes | ID of the customer |
+
+## Response
+
+```jsonl
+{
+  "id": "pay_123",
+  "status": "succeeded",
+  "amount": 1000,
+  "currency": "USD"
+}
+```
+
+## Error Responses
+
+### 400 Bad Request
+
+Returned when the request is invalid.
+
+### 401 Unauthorized
+
+Returned when the API key is invalid.
+
+### 500 Internal Server Error
+
+Returned when an unexpected server error occurs.
+
+```text
+```

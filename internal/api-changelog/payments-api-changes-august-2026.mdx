@@ -1,0 +1,91 @@
+---
+title: "Payments API Changes - August 2026"
+---
+
+# Payments API Changes
+
+## Create Payment
+
+The `POST /v1/payments` endpoint was updated in August 2026.
+
+### Changes
+
+The endpoint now requires an `idempotency_key`.
+
+The `customer_id` field is optional.
+
+A new `payment_method` object is required.
+
+The response now returns:
+
+- `id`
+- `status`
+- `amount`
+- `currency`
+- `customer_id`
+- `payment_method`
+- `created_at`
+
+The endpoint can now return `422 Unprocessable Entity` when the request is syntactically valid but fails validation.
+
+### Current request
+
+```json
+{
+  "amount": 1000,
+  "currency": "USD",
+  "customer_id": "cus_123",
+  "payment_method": {
+    "type": "card",
+    "token": "tok_123"
+  }
+}
+```
+
+### Required headers
+
+```text
+Authorization: Bearer YOUR_API_KEY
+Content-Type: application/json
+Idempotency-Key: \<unique-key\>
+```
+
+### Current response
+
+```jsonl
+{
+ 
+  "id": "pay\_123",
+
+  "status": "processing",
+
+  "amount": 1000,
+
+  "currency": "USD",
+
+  "customer_id": "cus_123",
+
+  "payment_method": {
+
+    "type": "card"
+
+  },
+
+  "created_at": "2026-08-18T10:30:00Z"
+
+}
+```
+
+ 
+
+### Current status behavior
+
+A successful request no longer necessarily returns `succeeded`.
+
+The payment can initially be:
+
+- `processing`
+- `succeeded`
+- `failed`<br />
+
+Most newly created card payments initially return `processing`.
