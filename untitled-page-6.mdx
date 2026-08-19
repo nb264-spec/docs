@@ -1,0 +1,20 @@
+---
+title: "Webhooks"
+description: "Receive events from Acme AI."
+---
+
+# Acme AI Webhooks
+
+Use webhooks to receive asynchronous events from Acme AI.
+
+Events can notify your application when an AI operation completes or fails.
+
+## Example event
+
+```json
+{
+  "type": "response.completed",
+  "response_id": "resp_123",
+  "status": "completed"
+}
+```

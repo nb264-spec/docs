@@ -1,0 +1,41 @@
+---
+title: "Quickstart"
+description: "Make your first Acme AI request."
+---
+
+# Acme AI Quickstart
+
+This guide walks you through making your first request to Acme AI.
+
+## 1. Create an API key
+
+Create an API key from the Acme Developer Dashboard.
+
+## 2. Install the SDK
+
+```bash
+npm install @acme/ai
+```
+
+## 3. Make a request
+
+```text
+import { AcmeAI } from "@acme/ai";
+
+const client = new AcmeAI({
+  apiKey: process.env.ACME_API_KEY
+});
+
+const response = await client.responses.create({
+  model: "acme-1",
+  input: "Explain APIs in one sentence."
+});
+
+console.log(response.output);
+```
+
+### Next steps
+
+- Explore available models.
+- Learn about the Responses API.
+- Add tools to your application.
