@@ -19,6 +19,17 @@
         ]
       },
       {
+        "group": "Acme AI",
+        "pages": [
+          "ai/overview",
+          "ai/quickstart",
+          "ai/models",
+          "ai/responses",
+          "ai/tools",
+          "ai/webhooks"
+        ]
+      },
+      {
         "group": "API Reference",
         "pages": [
           "api-reference/customers",
