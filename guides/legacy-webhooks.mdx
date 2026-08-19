@@ -1,0 +1,31 @@
+---
+title: "Legacy Webhooks"
+description: "Reference for the original webhook delivery system"
+tag: "Deprecated"
+---
+
+<Warning>
+  The legacy webhook delivery system is being phased out. This page is retained for existing integrations only. See [Webhooks](/webhooks) for the current guidance.
+</Warning>
+
+## Overview
+
+This guide covers the original webhook delivery system used before the event-streaming API was introduced. Some integrations built early in the product's lifecycle still rely on this flow.
+
+## Registering a webhook
+
+Send a POST request to register an endpoint:
+
+```bash
+curl -X POST https://api.example.com/v1/webhooks/register \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"url": "https://yourapp.com/webhook-handler", "events": ["order.created"]}'
+```
+
+## Payload format
+
+Legacy webhook payloads are delivered as `application/x-www-form-urlencoded` rather than JSON. Each payload includes an `event_type`, `timestamp`, and `signature` field for verification. See [Webhooks v1 Payload Format](/guides/deprecated-webhooks-v1-format) for the full schema.
+
+## Retry behavior
+
+Failed deliveries are retried up to 3 times with exponential backoff (1m, 5m, 15m). After the third failure, the webhook is automatically disabled and must be manually re-enabled from the dashboard.

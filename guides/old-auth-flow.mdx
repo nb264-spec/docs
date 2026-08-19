@@ -1,0 +1,24 @@
+---
+title: "Legacy API Key Authentication"
+description: "Static API key authentication used before OAuth2 support was added"
+tag: "Deprecated"
+---
+
+<Warning>
+  Static API key authentication is deprecated in favor of OAuth2. This page is retained for existing integrations only. See [Authentication](/authentication) for the current method.
+</Warning>
+
+## Overview
+
+Before OAuth2 support was added, integrations authenticated using a static API key passed directly in request headers.
+
+## Usage
+
+```bash
+curl https://api.example.com/v1/customers \
+  -H "X-API-Key: YOUR_STATIC_KEY"
+```
+
+## Limitations
+
+This method does not support scoped permissions or key rotation without regenerating the key manually from account settings.

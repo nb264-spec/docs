@@ -1,0 +1,17 @@
+---
+title: "Webhooks v1 Payload Format"
+description: "Schema reference for the deprecated v1 webhook payload"
+tag: "Deprecated"
+---
+
+<Warning>
+  The v1 webhook payload format is deprecated. This schema is retained here for integrations still parsing the legacy format. See [Legacy Webhooks](/guides/legacy-webhooks) for the full delivery reference.
+</Warning>
+
+## Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| event\_type | string | Event name |
+| timestamp | integer | Unix timestamp |
+| signature | string | HMAC signature |
