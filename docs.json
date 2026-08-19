@@ -44,17 +44,6 @@
           "index",
           "quickstart"
         ]
-      },
-      {
-        "group": "ACME AI",
-        "pages": [
-          "untitled-page",
-          "untitled-page-2",
-          "untitled-page-3",
-          "untitled-page-4",
-          "untitled-page-5",
-          "untitled-page-6"
-        ]
       }
     ],
     "global": {
