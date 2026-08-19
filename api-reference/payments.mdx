@@ -9,20 +9,25 @@ description: "Create a payment using the Payments API."
 
 ## Authentication
 
-This endpoint requires an API key.
+This endpoint requires an OAuth 2.0 access token and a unique idempotency key.
 
 ```http
-Authorization: Bearer YOUR_API_KEY
+Authorization: Bearer <access_token>
 Content-Type: application/json
+Idempotency-Key: <unique-key>
 ```
 
 ## Request
 
-```jsonl
+```json
 {
   "amount": 1000,
   "currency": "USD",
-  "customer_id": "cus_123"
+  "customer_id": "cus_123",
+  "payment_method": {
+    "type": "card",
+    "token": "tok_123"
+  }
 }
 ```
 
@@ -30,34 +35,32 @@ Content-Type: application/json
 
 | Parameter | Type | Required | Description |
 | --- | --- | --- | --- |
-| amount | integer | Yes | Payment amount in cents |
-| currency | string | Yes | Three-letter currency code |
-| customer\_id | string | Yes | ID of the customer |
+| `amount` | integer | Yes | Payment amount in cents |
+| `currency` | string | Yes | Three-letter currency code |
+| `payment_method` | object | Yes | Payment method details, including its `type` and token |
+| `customer_id` | string | No | ID of the customer associated with the payment |
 
 ## Response
 
-```jsonl
+New card payments usually start in `processing` and later transition to `succeeded` or `failed`.
+
+```json
 {
   "id": "pay_123",
-  "status": "succeeded",
+  "status": "processing",
   "amount": 1000,
-  "currency": "USD"
+  "currency": "USD",
+  "customer_id": "cus_123",
+  "payment_method": {
+    "type": "card"
+  },
+  "created_at": "2026-08-18T10:30:00Z"
 }
 ```
 
-## Error Responses
+## Error responses
 
-### 400 Bad Request
-
-Returned when the request is invalid.
-
-### 401 Unauthorized
-
-Returned when the API key is invalid.
-
-### 500 Internal Server Error
-
-Returned when an unexpected server error occurs.
-
-```text
-```
+- `400 Bad Request` — the request is malformed.
+- `401 Unauthorized` — the access token is missing or invalid.
+- `422 Unprocessable Entity` — the request is syntactically valid but fails validation.
+- `500 Internal Server Error` — an unexpected server error occurred.
